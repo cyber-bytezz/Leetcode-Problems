@@ -1,11 +1,14 @@
 class Solution(object):
-    def twoSum(self, nums, target):
-        number = {}
+    def groupAnagrams(self, strs):
+        anagrams = {}  
+    
+        for c in strs:
+            sort = ''.join(sorted(c))  
+            if sort in anagrams:
+                anagrams[sort].append(c) 
+            else:
+                anagrams[sort] = [c]  
 
-        for i , num in enumerate(nums):
-            diff = target - num
+        result = list(anagrams.values())  
 
-            if diff in number:
-                return[number[diff], i]
-            number[num] = i
-        return[]
+        return result  
